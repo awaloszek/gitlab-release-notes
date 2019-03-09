@@ -1,0 +1,21 @@
+{
+  "name": "gitlab-release-notes",
+  "version": "1.0.0",
+  "description": "This command line tool is a helper that creates a GitLab Wiki Page with all closed Subjects by closed Milestones for a selected Project that can act as a Release Notes Page for the Project.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awaloszek/gitlab-release-notes.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "André Waloszek",
+  "license": "Apache-2.0",
+  "bin": {
+    "gitlab-release-notes": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
+  }
+}
