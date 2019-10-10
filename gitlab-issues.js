@@ -6,24 +6,23 @@ function getClosedMilestones(pid, response) {
 
     function addIssuesToMilestones(milestones) {
 
-        milestones.forEach(milestone => {
+        var queue = Array.from(milestones);
+
+        loadIssues(queue.pop());
+
+        function loadIssues(milestone) {
 
             client.getAllPages('projects/' + pid + '/milestones/' + milestone.id + '/issues', addIssuesToMilestone);
 
             function addIssuesToMilestone(issues) {
                 milestone.issues = issues;
-                if (requestIsDone())
-                    response(milestones);
-            }
 
-            function requestIsDone() {
-                for (const milestone of milestones) {
-                    if (!('issues' in milestone))
-                        return false;
-                }
-                return true;
+                if (queue.length == 0)
+                    response(milestones);
+                else 
+                    loadIssues(queue.pop())
             }
-        });
+        }
     }
 }
 
